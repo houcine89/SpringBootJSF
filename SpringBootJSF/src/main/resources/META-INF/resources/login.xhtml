@@ -15,7 +15,7 @@
                                 <h:outputLabel for="username" value="User" />
                             </div>
                             <div class="forField" style="width: 65%">
-                                <h:inputText id="username" required="true"
+                                <p:inputText id="username" required="true"
                                              requiredMessage="Please enter username (or go to hell...)" />
                                 <h:messages for="username" />
                             </div>
@@ -25,9 +25,9 @@
                                 <h:outputLabel for="password" value="Password" />
                             </div>
                             <div class="forField" style="width: 65%">
-                                <h:inputSecret id="password" required="true"
-                                               requiredMessage="Please enter password (otherwise you'll die!!)"
-                                               name="password" />
+                                <p:password id="password" required="true"
+                                            requiredMessage="Please enter password (otherwise you'll die!!)"
+                                            name="password"  feedback="true" />
                                 <h:messages for="password" />
                             </div>
                         </div>
