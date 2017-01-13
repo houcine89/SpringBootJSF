@@ -1,4 +1,4 @@
-package com.houcine.springboot;
+package com.houcine.springboot.view;
 
 import de.larmic.butterfaces.model.text.AutoCompleteModel;
 import de.larmic.butterfaces.util.StringUtils;

@@ -1,4 +1,4 @@
-package com.houcine.springboot;
+package com.houcine.springboot.view;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
