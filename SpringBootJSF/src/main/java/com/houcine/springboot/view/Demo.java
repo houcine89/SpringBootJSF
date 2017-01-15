@@ -9,6 +9,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Named
 @ViewScoped
@@ -35,7 +36,8 @@ public class Demo implements Serializable {
     }
 
     public AutoCompleteModel getAutoCompleteModel() {
-        return new AutoCompleteModel() {
+        /* Java 7 syntaxe */
+        /*return new AutoCompleteModel() {
             @Override
             public List<String> autoComplete(Object value) {
                 final List<String> values = new ArrayList<String>();
@@ -50,7 +52,12 @@ public class Demo implements Serializable {
 
                 return values;
             }
-        };
+        };*/
+
+        /* Java 8 syntaxe */
+        return (Object value) -> autoCompleteValues.stream()
+                    .filter(autoCompleteValue -> autoCompleteValue.toLowerCase().contains(value.toString().toLowerCase()))
+                    .collect(Collectors.toList());
     }
 
     public int getNumber() {

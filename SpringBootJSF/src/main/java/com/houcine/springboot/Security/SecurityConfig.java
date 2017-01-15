@@ -55,8 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        /*auth.inMemoryAuthentication()
-                .withUser("user").password("user").roles("USER");*/
         auth.jdbcAuthentication().dataSource(dataSource) .usersByUsernameQuery("select username,password, enabled from users where username=?")
                 .authoritiesByUsernameQuery("select username, role from user_roles where username=?");
     }
