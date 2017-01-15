@@ -19,6 +19,17 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private Collection<UserRole> roles;
 
+    public User() {
+        super();
+    }
+
+    public User(String username, String password, boolean enabled) {
+        this();
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
     public String getUsername() {
         return username;
     }

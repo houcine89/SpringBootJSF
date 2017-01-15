@@ -3,16 +3,36 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:sec="http://www.springframework.org/security/tags">
 
     <ui:define name="content">
 
 
         <p:link title="Logout" href="/logout.jsf" value="Logout">
-        </p:link>
+        </p:link><br/>
 
 
-        <h:form>
+        <h:form id="form">
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <p:panel id="panel" header="Form" style="margin-bottom:10px;">
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel for="username" value="Text 1:" />
+                        <p:inputText id="username" value="#{userPaginatorView.username}" required="true" label="User Name">
+                            <f:validateLength minimum="2" />
+                        </p:inputText>
+                        <p:message for="username" />
+
+                        <p:outputLabel for="password" value="Text 2:" />
+                        <p:inputText id="password" value="#{userPaginatorView.password}" required="true" label="Password"/>
+                        <p:message for="password" />
+
+                        <p:commandButton value="Submit" update="@form" ajax="true" actionListener="#{userPaginatorView.save}" style="margin-right:20px;" />
+                    </h:panelGrid>
+                </p:panel>
+            </sec:authorize><br/>
+
             <p:dataTable var="user" value="#{userPaginatorView.users}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -22,6 +42,9 @@
                 </p:column>
                 <p:column headerText="Roles">
                     <h:outputText value="#{user.roles}" />
+                </p:column>
+                <p:column headerText="Enabled">
+                    <h:outputText value="#{user.enabled}" />
                 </p:column>
             </p:dataTable>
         </h:form>

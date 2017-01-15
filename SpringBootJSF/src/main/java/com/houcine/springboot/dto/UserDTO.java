@@ -13,12 +13,13 @@ public class UserDTO implements Serializable {
 
     private String username;
     private String roles;
+    private boolean enabled;
 
     public UserDTO(User user) {
         this.username = user.getUsername();
-
         StringBuilder builder = new StringBuilder();
         this.roles = user.getRoles().stream().map(UserRole::getRole).collect(Collectors.joining(","));
+        this.enabled = user.isEnabled();
     }
 
     public String getUsername() {
@@ -37,4 +38,11 @@ public class UserDTO implements Serializable {
         this.roles = roles;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }
