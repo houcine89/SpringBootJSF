@@ -1,7 +1,6 @@
 <ui:composition template="templates/base.xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:b="http://butterfaces.org/components"
                 xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html">
@@ -12,45 +11,6 @@
         <p:link title="Logout" href="/logout.jsf" value="Logout">
         </p:link>
 
-
-        <h:form styleClass="container" style="padding-top: 20px">
-            <o:validateOne components="text" />
-            <div class="alert alert-success">
-                Testing PrimeFaces and ButterFaces integration. Using b:labeledContainer with p:spinner.
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <b:labeledContainer label="input">
-                        <p:spinner id="ajaxSpinner" value="#{demo.number}">
-                            <p:ajax update="ajaxSpinnerValue" process="@this"/>
-                        </p:spinner>
-                    </b:labeledContainer>
-
-                    <b:labeledContainer label="output">
-                        <h:outputText id="ajaxSpinnerValue" value="#{demo.number}"/>
-                    </b:labeledContainer>
-                </div>
-                <div class="col-md-6">
-                    <b:text id="text"
-                            label="label"
-                            value="#{demo.value}"
-                            placeholder="begin with typing test...">
-                        <f:ajax event="keyup"
-                                execute="@this"
-                                render="autoCompleteValue" />
-                        <b:autoComplete autoComplete="#{demo.autoCompleteModel}" />
-                        <b:tooltip placement="top">
-                            Try it with <strong>ButterFaces</strong> or <strong>test</strong>
-                        </b:tooltip>
-                    </b:text>
-                    <b:labeledContainer label="output">
-                        <h:outputText id="autoCompleteValue" value="#{demo.value}"/>
-                    </b:labeledContainer>
-                </div>
-            </div>
-
-        </h:form>
 
         <h:form>
             <p:dataTable var="user" value="#{userPaginatorView.users}" rows="10"
@@ -65,10 +25,6 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-
-        <b:waitingPanel />
-
-        <b:activateLibraries/>
 
     </ui:define>
 
