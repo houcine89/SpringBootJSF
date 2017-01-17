@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class UserRole {
     @Id
     @Column(name = "user_role_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -16,6 +17,14 @@ public class UserRole {
     private User user;
 
     private String role;
+
+    public UserRole() {
+    }
+
+    public UserRole(User user, String role) {
+        this.user = user;
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;

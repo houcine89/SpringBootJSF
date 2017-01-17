@@ -28,6 +28,10 @@
                         <p:inputText id="password" value="#{userPaginatorView.password}" required="true" label="Password"/>
                         <p:message for="password" />
 
+                        <p:selectManyMenu  value="#{userPaginatorView.selectedRoles}" effect="slide" header="Categories" showHeaders="true">
+                            <f:selectItems value="#{userPaginatorView.roles}" />
+                        </p:selectManyMenu>
+
                         <p:commandButton value="Submit" update="@form" ajax="true" actionListener="#{userPaginatorView.save}" style="margin-right:20px;" />
                     </h:panelGrid>
                 </p:panel>
